@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Diagrama Vivo de Conexiones · MICELIO CULTURAL</title>
+<title>Diagrama de conexiones · MICELIO CULTURAL</title>
 <meta name="description" content="Dispositivo participativo de MICELIO CULTURAL para activar y observar conexiones entre cuerpo, creación, comunidad, territorio, memoria, saber, lenguaje, afecto, materialidad, tecnología, espacio y archivo.">
 <style>
 :root{
@@ -204,7 +204,7 @@ textarea::placeholder{color:#687b7d}
   <header class="header">
     <div>
       <p class="kicker">MICELIO CULTURAL · CONECTAR</p>
-      <h1>Diagrama Vivo<br> de Conexiones</h1>
+      <h1>Diagrama<br> de conexiones</h1>
       <p class="intro">Elige dos palabras que, para ti, entren en relación. Entre ambas puede aparecer una experiencia, una tensión, un recuerdo o una posibilidad. Déjala crecer en la red.</p>
     </div>
     <div class="header-actions"><div class="operation">dispositivo participativo</div><button id="fullscreenToggle" class="ghost-btn fullscreen-toggle" type="button" aria-controls="diagramaConexiones" aria-pressed="false" aria-label="Pantalla completa" title="Pantalla completa"><svg class="fullscreen-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="fullscreen-enter" d="M7 3H3v4m14-4h4v4M3 17v4h4m10 0h4v-4"/><path class="fullscreen-exit" d="M3 7h4V3m10 0v4h4M3 17h4v4m10 0v-4h4"/></svg><span data-fullscreen-label>Pantalla completa</span></button></div>
@@ -213,7 +213,7 @@ textarea::placeholder{color:#687b7d}
   <section class="stage" aria-label="Red participativa de conexiones">
     <div class="network-field">
       <svg id="diagramaSvg" viewBox="0 0 1000 680" role="img" aria-labelledby="diagramaTitle diagramaDesc">
-        <title id="diagramaTitle">Diagrama vivo de conexiones</title>
+        <title id="diagramaTitle">Diagrama de conexiones</title>
         <desc id="diagramaDesc">Red participativa formada por doce nodos: cuerpo, creación, comunidad, territorio, memoria, saber, lenguaje, afecto, materialidad, tecnología, espacio y archivo.</desc>
         <g id="diagramaEdges"></g>
         <g id="diagramaEdgeHits"></g>
@@ -238,7 +238,7 @@ textarea::placeholder{color:#687b7d}
       <textarea id="diagramaReflection" maxlength="240" placeholder="Escribe una imagen, una experiencia, una tensión, una posibilidad…" required></textarea>
       <label class="consent" for="diagramaConsent">
         <input type="checkbox" id="diagramaConsent" required>
-        <span>Acepto que esta reflexión se incorpore de forma anónima al Diagrama Vivo y al archivo de MICELIO CULTURAL.</span>
+        <span>Acepto que esta reflexión se incorpore de forma anónima al Diagrama de conexiones y al archivo de MICELIO CULTURAL.</span>
       </label>
       <div class="actions">
         <button class="ghost-btn" id="diagramaCancel" type="button">Cancelar</button>
@@ -628,7 +628,7 @@ textarea::placeholder{color:#687b7d}
       networkState.textContent=total?'La red cambia con las participaciones acumuladas.':'La primera participación abrirá la red.';
       return true;
     }catch(error){
-      console.error('Diagrama Vivo:',error);networkState.textContent='El archivo compartido no está disponible en este momento.';
+      console.error('Diagrama de conexiones:',error);networkState.textContent='El archivo compartido no está disponible en este momento.';
       if(!silent)feedback.textContent='No pudimos leer la red compartida. Puedes volver a intentar en unos segundos.';return false;
     }
   }
@@ -637,7 +637,7 @@ textarea::placeholder{color:#687b7d}
     event.preventDefault();if(!selectedA||!selectedB)return;
     const text=reflection.value.trim();const submitBtn=form.querySelector('.primary-btn');
     if(!text){feedback.textContent='Escribe una reflexión antes de conectar los nodos.';reflection.focus();return}
-    if(!consent.checked){feedback.textContent='Marca la casilla para incorporar esta huella al Diagrama Vivo.';consent.focus();return}
+    if(!consent.checked){feedback.textContent='Marca la casilla para incorporar esta huella al Diagrama de conexiones.';consent.focus();return}
     const pairKey=canonicalKey(selectedA,selectedB);submitBtn.disabled=true;submitBtn.setAttribute('aria-busy','true');feedback.textContent='Incorporando la conexión…';
     try{
       const response=await fetch(writeEndpoint,{method:'POST',headers:{apikey:supabaseKey,'Content-Type':'application/json',Accept:'application/json','Prefer':'return=minimal'},body:JSON.stringify({
